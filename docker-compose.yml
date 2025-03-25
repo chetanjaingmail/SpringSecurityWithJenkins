@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spring_security_db
+    ports:
+      - "3307:3306"  # Fixed the port mapping
+    networks:
+      - mynetwork
+
+  spring-app:
+    build: .
+    container_name: spring-boot-new-container
+    depends_on:
+      - mysql-db
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/spring_security_db?allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+networks:
+  mynetwork:
