@@ -34,6 +34,7 @@ public class AdminUserController {
 
     @GetMapping("/admin")
     public String adminPage() {
+System.out.println("Wellcome User");
         return "Welcome, Admin!";
     }
 
