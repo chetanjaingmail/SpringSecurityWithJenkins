@@ -14,7 +14,7 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat 'chmod +x mvnw.cmd'  // Give execution permission
+                bat 'mvnw.cmd'  // Give execution permission
                 bat '.\\mvnw.cmd clean package -DskipTests'  // Use mvnw.cmd for Windows
             }
         }
