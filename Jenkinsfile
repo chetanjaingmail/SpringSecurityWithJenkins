@@ -14,8 +14,8 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat 'mvnw.cmd'  // Give execution permission
-                bat '.\\mvnw.cmd clean package -DskipTests'  // Use mvnw.cmd for Windows
+                // Use mvnw.cmd with the appropriate Maven goals
+                bat '.\\mvnw.cmd clean package -DskipTests'  // Windows Maven wrapper with clean and package goal
             }
         }
 
