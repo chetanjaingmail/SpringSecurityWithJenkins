@@ -22,7 +22,7 @@ pipeline {
         stage('Start Containers') {
             steps {
                 bat 'docker-compose pull'  // Pull latest images
-                bat 'docker-compose up -d --build --no-cache'  // Start containers
+                bat 'docker-compose up -d --build'  // Start containers
             }
         }
 
