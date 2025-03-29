@@ -31,6 +31,15 @@ pipeline {
                 bat 'docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
             }
         }
+    }
 
-  
+    post {
+        success {
+            echo 'Pipeline executed successfully! The containers are running.'
+        }
+
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
 }
