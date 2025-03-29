@@ -32,16 +32,5 @@ pipeline {
             }
         }
 
-        stage('Cleanup Unused Resources') {
-            steps {
-                bat 'docker system prune -f'
-            }
-        }
-    }
-
-    post {
-        always {
-            bat 'docker-compose down -v'  // Shutdown and remove volumes
-        }
-    }
+  
 }
